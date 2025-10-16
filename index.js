@@ -5,6 +5,7 @@ const connectMongoDB = require('./MongoDB/connectMongoDB');
 const ibmModel = require('./MongoDB/schema');
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+require('dotenv').config();
 
 connectMongoDB();
 
