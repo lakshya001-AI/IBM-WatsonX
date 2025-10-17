@@ -1,0 +1,132 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "IBM Watson Orchestrate API",
+        "version": "1.0.0",
+        "description": "API for creating and fetching invoices"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Test route",
+                "responses": {
+                    "200": {
+                        "description": "Returns a welcome message"
+                    }
+                }
+            }
+        },
+        "/api/create-invoice": {
+            "post": {
+                "summary": "Create a new invoice",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "invoiceNumber": {
+                                        "type": "string"
+                                    },
+                                    "invoiceDate": {
+                                        "type": "string"
+                                    },
+                                    "dueDate": {
+                                        "type": "string"
+                                    },
+                                    "clientName": {
+                                        "type": "string"
+                                    },
+                                    "invoiceDescription": {
+                                        "type": "string"
+                                    },
+                                    "invoiceAmount": {
+                                        "type": "number"
+                                    },
+                                    "paymentLink": {
+                                        "type": "string"
+                                    },
+                                    "paymentStatus": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Invoice created successfully"
+                    },
+                    "500": {
+                        "description": "Error creating invoice"
+                    }
+                }
+            }
+        },
+        "/api/get-all-invoices": {
+            "get": {
+                "summary": "Get all invoices",
+                "responses": {
+                    "200": {
+                        "description": "Returns all invoices"
+                    },
+                    "500": {
+                        "description": "Error fetching invoices"
+                    }
+                }
+            }
+        },
+        "/api/get-invoice-by-id/{id}": {
+            "get": {
+                "summary": "Get invoice by ID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "description": "The invoice ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns invoice details"
+                    },
+                    "500": {
+                        "description": "Error fetching invoice"
+                    }
+                }
+            }
+        },
+        "/api/get-invoice-by-clientName/{clientName}": {
+            "get": {
+                "summary": "Get invoice by client name",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "clientName",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "description": "Name of the client"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns invoice details for a client"
+                    },
+                    "500": {
+                        "description": "Error fetching invoice"
+                    }
+                }
+            }
+        }
+    },
+    "components": {},
+    "tags": []
+}
